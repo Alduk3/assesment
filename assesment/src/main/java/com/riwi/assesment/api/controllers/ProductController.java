@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,38 +49,38 @@ public class ProductController {
         return ResponseEntity.ok(this.productService.getById(id));
     }
 
-    @Operation(summary = "Create a new product", description = "Add a new product to the inventory.")
-    @ApiResponse(responseCode = "201", description = "Product successfully created",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductBasicResponse.class)))
-    @ApiResponse(responseCode = "400", description = "Invalid request data",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+//    @Operation(summary = "Create a new product", description = "Add a new product to the inventory.")
+//    @ApiResponse(responseCode = "201", description = "Product successfully created",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductBasicResponse.class)))
+//    @ApiResponse(responseCode = "400", description = "Invalid request data",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+//
+//    @PostMapping
+//    public ResponseEntity<ProductBasicResponse> create(@Validated @RequestBody ProductRequest productRequest) {
+//        return ResponseEntity.ok(productService.create(productRequest));
+//    }
 
-    @PostMapping
-    public ResponseEntity<ProductBasicResponse> create(@RequestBody ProductRequest productRequest) {
-        return ResponseEntity.ok(productService.create(productRequest));
-    }
+//    @Operation(summary = "Delete a product", description = "Remove a product from the inventory by its ID.")
+//    @ApiResponse(responseCode = "204", description = "Product successfully deleted")
+//    @ApiResponse(responseCode = "404", description = "Product not found",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+//
+//    @DeleteMapping(path = "/{id}")
+//    public ResponseEntity<Void> delete(@PathVariable String id) {
+//        this.productService.delete(id);
+//        return ResponseEntity.noContent().build();
+//    }
 
-    @Operation(summary = "Delete a product", description = "Remove a product from the inventory by its ID.")
-    @ApiResponse(responseCode = "204", description = "Product successfully deleted")
-    @ApiResponse(responseCode = "404", description = "Product not found",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
-
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        this.productService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @Operation(summary = "Update a product", description = "Modify an existing product's details.")
-    @ApiResponse(responseCode = "200", description = "Product successfully updated",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductBasicResponse.class)))
-    @ApiResponse(responseCode = "400", description = "Invalid request data",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
-    @ApiResponse(responseCode = "404", description = "Product not found",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
-
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<ProductBasicResponse> update(@PathVariable String id, @RequestBody ProductRequest productRequest) {
-        return ResponseEntity.ok(this.productService.update(productRequest, id));
-    }
+//    @Operation(summary = "Update a product", description = "Modify an existing product's details.")
+//    @ApiResponse(responseCode = "200", description = "Product successfully updated",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductBasicResponse.class)))
+//    @ApiResponse(responseCode = "400", description = "Invalid request data",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+//    @ApiResponse(responseCode = "404", description = "Product not found",
+//            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+//
+//    @PutMapping(path = "/{id}")
+//    public ResponseEntity<ProductBasicResponse> update(@PathVariable String id,@Validated @RequestBody ProductRequest productRequest) {
+//        return ResponseEntity.ok(this.productService.update(productRequest, id));
+//    }
 }
