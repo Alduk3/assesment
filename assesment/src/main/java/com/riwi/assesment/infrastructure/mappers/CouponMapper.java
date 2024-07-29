@@ -12,14 +12,12 @@ import com.riwi.assesment.domain.entities.Coupons;
 @Mapper(componentModel = "spring")
 public interface CouponMapper {
     @Mapping(target="id", ignore=true)
-    @Mapping(target="status", ignore=true)
     @Mapping(target="histories", ignore=true)
     Coupons couponRequestToCoupon(CouponRequest couponRequest);
 
     CouponResponse couponToCouponResponse(Coupons coupon);
 
     @Mapping(target="id", ignore=true)
-    @Mapping(target="status", ignore=true)
     @Mapping(target="histories", ignore=true)
     Coupons couponToUpdate(CouponRequest response, @MappingTarget Coupons coupon);
 }

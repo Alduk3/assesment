@@ -5,6 +5,7 @@ import java.util.Date;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,9 @@ public class CouponRequest {
 
     @NotNull(message = "Expiration date cannot be null")
     private Date expiration_date;
+
+    @Pattern(regexp = "(ACTIVE|EXPIRED)", message = "Status must be either ACTIVE or EXPIRED")
+    private String status;
 
     @NotNull(message = "Discount percentage cannot be null")
     @Min(value = 0, message = "Discount percentage must be greater than or equal to 0")
