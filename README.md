@@ -90,3 +90,9 @@ The Coupon Management System is a robust API designed to handle the management a
 - **List Products**
   - `GET /products`
   - **Description**: Retrieve a list of all products.
+ 
+  ### Diagrams
+  ![Screenshot 2024-07-29 at 13-48-00 (1306) Discord Bug Busters](https://github.com/user-attachments/assets/8f147b14-159c-407f-9fc2-0befcb4a89dd)
+![Screenshot 2024-07-29 at 13-48-08 (1306) Discord Bug Busters](https://github.com/user-attachments/assets/7ad10012-96dc-4dbc-8257-6df5aaf83154)
+
+  
