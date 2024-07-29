@@ -1,5 +1,25 @@
 # Coupon Management System
 
+## Integrants
+
+ - Alejandro Duque Florez
+ - Alejandro Amaya Agudelo
+ - Estivenson Alejandro Estrada Naranjo
+ - Cristian Javier Martínez Torres
+
+
+## How to start
+
+  1. Clone the repository
+
+  ```cmd
+
+  git clone https://github.com/Alduk3/assesment.git
+  
+  ```
+
+  2. Run the application
+
 ## Overview
 
 The Coupon Management System is a robust API designed to handle the management and redemption of discount coupons for an e-commerce platform. Built using Java and Spring Boot, this system will streamline the process of creating, managing, and redeeming coupons.
