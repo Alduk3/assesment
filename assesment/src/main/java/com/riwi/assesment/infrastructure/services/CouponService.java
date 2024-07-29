@@ -10,6 +10,7 @@ import com.riwi.assesment.api.dto.response.CouponResponse;
 import com.riwi.assesment.domain.entities.Coupons;
 import com.riwi.assesment.domain.repositories.CouponRepository;
 import com.riwi.assesment.infrastructure.abstract_services.ICouponService;
+import com.riwi.assesment.infrastructure.helpers.SupportServices;
 import com.riwi.assesment.infrastructure.mappers.CouponMapper;
 
 import jakarta.transaction.Transactional;
@@ -26,12 +27,13 @@ public class CouponService implements ICouponService {
 
     private CouponMapper couponMapper;
 
+    private SupportServices<Coupons> supportServices;
+
     @Override
     public CouponResponse create(CouponRequest request) {
         Coupons coupons = couponMapper.couponRequestToCoupon(request);
         return couponMapper.couponToCouponResponse(this.couponRepository.save(coupons));
     }
-
 
     @Override
     public void delete(String id) {
@@ -50,7 +52,7 @@ public class CouponService implements ICouponService {
     
     @Override
     public CouponResponse update(CouponRequest request, String id) {
-        Coupons coupons = this.find(id);
+        Coupons coupons = this.supportServices.findById(couponRepository, id, "coupon");
         if(coupons.getHistories().isEmpty()){
             couponMapper.couponToUpdate(request, coupons);
             return couponMapper.couponToCouponResponse(this.couponRepository.save(coupons));
@@ -58,9 +60,5 @@ public class CouponService implements ICouponService {
             throw new IllegalArgumentException("The coupon has been used");
         }
         // only if the coupons has no uses in the table history
-    }
-    
-    public Coupons find(String id) {
-        return couponRepository.findById(id).orElseThrow();
     }
 }
