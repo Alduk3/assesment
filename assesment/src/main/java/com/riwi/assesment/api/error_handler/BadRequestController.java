@@ -29,6 +29,11 @@ public class BadRequestController {
             errors.add(error);
         });
 
+//        var response = new ErrorsResponse();
+//
+//
+//        return response;
+
         return ErrorsResponse.builder()
                 .code(HttpStatus.BAD_REQUEST.value())
                 .status(HttpStatus.BAD_REQUEST.name())
@@ -44,6 +49,14 @@ public class BadRequestController {
 
         error.put("id", exception.getMessage());
         errors.add(error);
+
+ //       var response = new ErrorsResponse();
+//        response.setCode(HttpStatus.BAD_REQUEST.value());
+//        response.setStatus(HttpStatus.BAD_REQUEST.name());
+//        response.setErrors(errors);
+
+
+//        return response;
 
         return ErrorsResponse.builder()
                 .code(HttpStatus.BAD_REQUEST.value())
